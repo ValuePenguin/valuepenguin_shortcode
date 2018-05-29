@@ -228,11 +228,18 @@ function _shortcode_process($text, $filter) {
          * 4 - The content of a ShortCode when it wraps some content.
          */
 
+        $attrString = implode(' ', $ts);
+        if (substr($c, -1, 1) == '/') {
+          $as = substr($attrString, 0, -1);
+        } else {
+          $as = $attrString;
+        }
+
         $m = array(
           $c,
           '',
           $tag,
-          implode(' ', $ts),
+          $as,
           NULL,
           '',
         );
